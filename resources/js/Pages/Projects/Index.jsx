@@ -5,10 +5,26 @@ import { PROJECT_STATUS_CLASS_MAP, PROJECT_STATUS_TEXT_MAP } from "@/constraints
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link, router } from "@inertiajs/react";
 import React from "react";
+import {BeakerIcon, ChevronDownIcon, ChevronUpIcon} from '@heroicons/react/16/solid'
+import Heading from "@/Components/Heading";
 
 function index({ auth, projects , queryParams = null }) {
   
   queryParams = queryParams || {};
+
+  const sortChanged = (name) => {
+    if(name === queryParams.sort_field){
+      if(queryParams.sort_direction === 'desc'){
+        queryParams.sort_direction = 'asc';
+      } else {
+        queryParams.sort_direction = 'desc';
+      }
+    } else {
+      queryParams.sort_field = name;
+      queryParams.sort_direction = 'asc';
+    }
+    router.get(route("project.index"), queryParams);
+  }
 
   const searchFieldChanged = (name,value) => {
     if (value) {
@@ -41,15 +57,24 @@ function index({ auth, projects , queryParams = null }) {
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 text-gray-900 dark:text-gray-100">
               {/* <pre>{JSON.stringify(projects,undefined,2)}</pre> */}
+              <div className="overflow-auto">
               <table className='w-full text-sm text-left rtl:text-right text-grey-500 dark:text-gray-400'>
                 <thead className='text-xs text-grey-700 uppercase bg-gray-59 dark:bg-gray-700 dark:text-dark-400 border-b-2 border-grey-500'>
                   <tr className='text-nowrap'>
-                    <th className='px-3 py-2'>ID</th>
-                    <th className='px-3 py-2'>Name</th>
+                    
+
+                    <Heading sort_field={queryParams.sort_field} sort_direction={queryParams.sort_direction} name="id" sortChanged={sortChanged}>ID</Heading>
+                    <Heading sort_field={queryParams.sort_field} sort_direction={queryParams.sort_direction} name="name" sortChanged={sortChanged}>Name</Heading>
+
                     <th className='px-3 py-2'>Image</th>
-                    <th className='px-3 py-2'>Status</th>
-                    <th className='px-3 py-2'>Created Date</th>
-                    <th className='px-3 py-2 text-nowrap'>Due Date</th>
+
+                    <Heading sort_field={queryParams.sort_field} sort_direction={queryParams.sort_direction} name="status" sortChanged={sortChanged}>Status</Heading>
+
+                    <Heading sort_field={queryParams.sort_field} sort_direction={queryParams.sort_direction} name="created_date" sortChanged={sortChanged}>Created Date</Heading>
+
+                    <Heading sort_field={queryParams.sort_field} sort_direction={queryParams.sort_direction} name="due_date" sortChanged={sortChanged}>Due Date</Heading>
+
+                    
                     <th className='px-3 py-2'>Created By</th>
                     <th className='px-3 py-2 text-right'>Actions</th>
 
@@ -98,6 +123,7 @@ function index({ auth, projects , queryParams = null }) {
                   ))}
                 </tbody>
               </table>
+              </div>
               <Pagination links={projects.meta.links} />
             </div>
           </div>
