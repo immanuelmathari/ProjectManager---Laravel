@@ -58,8 +58,8 @@ function index({ auth, projects , queryParams = null }) {
             <div className="p-6 text-gray-900 dark:text-gray-100">
               {/* <pre>{JSON.stringify(projects,undefined,2)}</pre> */}
               <div className="overflow-auto">
-              <table className='w-full text-sm text-left rtl:text-right text-grey-500 dark:text-gray-400'>
-                <thead className='text-xs text-grey-700 uppercase bg-gray-59 dark:bg-gray-700 dark:text-dark-400 border-b-2 border-grey-500'>
+              <table className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400'>
+                <thead className='text-xs text-gray-700 uppercase bg-gray-59 dark:bg-gray-100 dark:text-dark-400 border-b-2 border-gray-500'>
                   <tr className='text-nowrap'>
                     
 
@@ -103,7 +103,11 @@ function index({ auth, projects , queryParams = null }) {
                   {projects.data.map((project) => (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700' key={project.id}>
                     <td className="p-3">{project.id}</td>
-                    <td className="p-3">{project.name}</td>
+                    <th className="p-3 hover:underline text-white text-nowrap">
+                      <Link href={route('project.show', project.id)}>
+                        {project.name}
+                      </Link>
+                    </th>
                     <td className="p-3" style={{width: 100}}>
                       <img src={project.image_path} alt=""/>
                     </td>
