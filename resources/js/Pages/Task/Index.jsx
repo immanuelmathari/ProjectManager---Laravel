@@ -6,10 +6,11 @@ import Heading from '@/Components/Heading';
 import Pagination from '@/Components/Pagination';
 import TextInput from '@/Components/TextInput';
 import SelectInput from '@/Components/SelectInput';
+import TaskTable from './TaskTable';
 
-function index({auth , tasks, queryParams = null}) {
+function index({auth , tasks , queryParams = null}) {
 
-    queryParams = queryParams || {};
+  queryParams = queryParams || {};
 
     const searchFieldChanged = (name,value) => {
         if (value) {
@@ -36,6 +37,8 @@ function index({auth , tasks, queryParams = null}) {
         }
         router.get(route("task.index"), queryParams);
       }
+
+
     return (
         <AuthenticatedLayout
         user = {auth.user}
