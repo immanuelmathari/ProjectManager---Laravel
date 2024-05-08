@@ -41,11 +41,11 @@ export default function Create({auth}) {
           <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 text-gray-900 dark:text-gray-100">
                 <form className="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg" onSubmit={onSubmit}>
-                    {/* <div>
+                    <div>
                         <InputLabel htmlFor="Project Image Path" value="Project Image"/>
-                        <TextInput id="project_image_path" type="file" name="image_path" value={data.image} className="mt-6 block w-full" onChange={e => setData('image_path', e.target.value)}/>
+                        <TextInput id="project_image_path" type="file" name="image_path" className="mt-6 block w-full" onChange={e => setData('image_path', e.target.files[0])}/>
                         <InputError message={errors.image_path} className="mt-2" />
-                    </div> */}
+                    </div>
 
                     <div className="mt-6">
                         <InputLabel htmlFor="Project Name" value="Project Name"/>

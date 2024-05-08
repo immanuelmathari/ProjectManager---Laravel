@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\TaskResource;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -50,8 +51,11 @@ class ProjectController extends Controller
         $data = $request->validated();
         $data['created_by'] = Auth::id();
         $data['updated_by'] = Auth::id();
-        $data['image_path'] = "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&psig=AOvVaw1ERlOVBvPy-JheiFHPZAt4&ust=1715155111793000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKiF7_KI-4UDFQAAAAAdAAAAABAE";
-
+        // $data['image_path'] = "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&psig=AOvVaw1ERlOVBvPy-JheiFHPZAt4&ust=1715155111793000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKiF7_KI-4UDFQAAAAAdAAAAABAE";
+        $image = $data['image_path'] ?? null;
+        if($image) {
+            $data['image_path'] = $image->store('project/'. Str::random() , 'public');
+        }
         Project::create($data);
         return to_route('project.index')->with('success', 'Project created successfully');
     }
