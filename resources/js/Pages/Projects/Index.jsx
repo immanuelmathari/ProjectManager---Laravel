@@ -40,6 +40,11 @@ function index({ auth, projects , queryParams = null , success }) {
     searchFieldChanged(name, e.target.value);
   };
 
+  const deleteProject = (project) => {
+    if (!window.confirm("Are you sure about this my nigga?")) {return;}
+    router.delete(route('project.destroy', project.id))
+  }
+
 
   return (
     <AuthenticatedLayout
@@ -126,11 +131,11 @@ function index({ auth, projects , queryParams = null , success }) {
                     {PROJECT_STATUS_TEXT_MAP[project.status]}
                     </span></td>
                     <td className="p-3">{project.created_at}</td>
-                    <td className="p-3">{project.due_date}</td>
+                    <td className="p-3 text-nowrap">{project.due_date}</td>
                     <td className="p-3">{project.createdBy.name}</td>
-                    <td className="p-3">
+                    <td className="p-3 text-nowrap">
                       <Link href={route('project.edit', project.id)} className='font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1'>Edit</Link>
-                      <Link href={route('project.destroy', project.id)} className='font-medium text-red-600 dark:text-red-500 hover:underline mx-1'>Delete</Link>
+                      <button className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1" onClick={e => {deleteProject(project)}}>Delete</button>
 
                     </td>
 
