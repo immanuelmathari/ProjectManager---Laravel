@@ -26,6 +26,7 @@ class ProjectFactory extends Factory
             'updated_by' => 1,
             'created_at' => time(),
             'updated_at' => time(),
+            'showcase' => false,
         ];
     }
 }

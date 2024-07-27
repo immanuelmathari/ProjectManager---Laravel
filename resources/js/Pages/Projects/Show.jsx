@@ -155,7 +155,7 @@ export default function Show({auth, project, tasks, queryParams = null}) {
                     </span></td>
                     <td className="p-3">{task.created_at}</td>
                     <td className="p-3">{task.due_date}</td>
-                    <td className="p-3">{task.created_by}</td>
+                    <td className="p-3">{task.createdBy}</td>
                     <td className="p-3">
                       <Link href={route('task.edit', task.id)} className='font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1'>Edit</Link>
                       <Link href={route('task.destroy', task.id)} className='font-medium text-red-600 dark:text-red-500 hover:underline mx-1'>Delete</Link>

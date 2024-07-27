@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::middleware(['auth','verified'])->group(function() {
     Route::get('/dashboard' , [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('project', ProjectController::class);
+    Route::post('project/showcase', [ProjectController::class, 'showcase'])->name('project.showcase');
     // somehow this task cant be after the task resource. what you find is that if its after its like it gets confused. haha
     Route::get('task/my-tasks', [TaskController::class, 'myTasks'])->name('task.myTasks');
     Route::resource('task', TaskController::class);

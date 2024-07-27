@@ -66,6 +66,7 @@ class TaskController extends Controller
         if ($image) {
             $data['image_path'] = $image->store('task/' . Str::random() , 'public');
         }
+        // dd($data);
         Task::create($data);
         return to_route('task.index')->with('success', 'Task created successfully');
 

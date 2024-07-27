@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ShowcaseProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
@@ -59,6 +60,12 @@ class ProjectController extends Controller
         }
         Project::create($data);
         return to_route('project.index')->with('success', 'Project created successfully');
+    }
+
+    public function showcase(ShowcaseProjectRequest $request, $projectId)
+    {
+        $project = Project::findOrFail($projectId);
+        dd($project);
     }
 
     /**
