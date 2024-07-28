@@ -13,6 +13,7 @@ function index({ auth, projects , queryParams = null , success }) {
   queryParams = queryParams || {};
 
   const sortChanged = (name) => {
+    // first check if the field is already sorted asin it is in the query params
     if(name === queryParams.sort_field){
       if(queryParams.sort_direction === 'desc'){
         queryParams.sort_direction = 'asc';

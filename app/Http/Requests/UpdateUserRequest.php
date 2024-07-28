@@ -23,7 +23,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $user = $this->route("user");
+        $user = $this->route("user"); // this is how we avoid $this->id below
         return [
             'name' => ['required','string','max:255'],
             'email' => ['required', 'email' , Rule::unique('users')->ignore($user->id),],

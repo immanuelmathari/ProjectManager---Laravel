@@ -14,7 +14,7 @@ export default function Edit({auth, task, projects, users, success}) {
         description : task.description  || '',
         priority : task.priority  || '',
         due_date : task.due_date   || '',
-        // project_id : task.project_id   || '',
+        project_id : task.project_id   || '',
         assigned_user_id : task.assigned_user_id   || '',
         _method: 'PUT'
     })
@@ -53,26 +53,26 @@ export default function Edit({auth, task, projects, users, success}) {
                             <img src={task.image_path} alt="task image" className="w-64"/>
                         </div>
                     )}
-                    {/* <div>
-                <InputLabel htmlFor="task_project_id" value="Project" />
+                      <div>
+                  <InputLabel htmlFor="task_project_id" value="Project" />
 
-                <SelectInput
-                  name="project_id"
-                  id="task_project_id"
-                  defaultvalue={data.project_id}
-                  className="mt-1 block w-full"
-                  onChange={(e) => setData("project_id", e.target.value)}
-                >
-                  <option value={task.project_id} selected>{task.project_name}</option>
-                  {projects.data.map((project) => (
-                    <option value={project.id} key={project.id}>
-                      {project.name}
-                    </option>
-                  ))}
-                </SelectInput>
+                  <SelectInput
+                    name="project_id"
+                    id="task_project_id"
+                    defaultvalue={data.project_id}
+                    className="mt-1 block w-full"
+                    onChange={(e) => setData("project_id", e.target.value)}
+                  >
+                    <option value={task.project_id} selected>{task.project_name}</option>
+                    {projects.data.map((project) => (
+                      <option value={project.id} key={project.id}>
+                        {project.name}
+                      </option>
+                    ))}
+                  </SelectInput>
 
-                <InputError message={errors.project_id} className="mt-2" />
-              </div> */}
+                  <InputError message={errors.project_id} className="mt-2" />
+                </div>
                     <div>
                         <InputLabel htmlFor="task Image Path" value="task Image"/>
                         <TextInput id="task_image_path" type="file" name="image" className="mt-6 block w-full" onChange={e => setData('image', e.target.files[0])}/>

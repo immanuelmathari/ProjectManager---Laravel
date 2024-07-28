@@ -32,19 +32,19 @@ export default function Show({auth, task}) {
                 <div className="grid gep-1 grid-cols-2 mt-2">
                   <div>
                     <div>
-                      <label>task ID</label>
-                      <p className="font-bold text-lg">{task.id}</p>
+                      <label className="font-bold text-lg">task ID</label>
+                      <p >{task.id}</p>
                     </div>
                     <div>
-                      <label>task Name</label>
-                      <p className="font-bold text-lg mt-4">{task.name}</p>
+                      <label className="font-bold text-lg mt-4">task Name</label>
+                      <p >{task.name}</p>
                     </div>
                     <div>
-                      <label>Project Name</label>
-                      <p className="font-bold text-lg mt-4">{task.project_name}</p>
+                      <label className="font-bold text-lg mt-4">Project Name</label>
+                      <p >{task.project_name}</p>
                     </div>
                     <div>
-                      <label>task Status</label>
+                      <label className="font-bold text-lg mt-4">task Status</label>
                       <p className="mt-1">
                         <span className={'px-2 py-1 rounded text-white ' + TASK_STATUS_CLASS_MAP[task.status] }>
                           {TASK_STATUS_TEXT_MAP[task.status]}
@@ -52,10 +52,10 @@ export default function Show({auth, task}) {
                       </p>
                     </div>
                     <div>
-                      <label>task priority</label>
+                      <label  className="font-bold text-lg mt-4">task priority</label>
                       <p className="mt-1">
-                        <span className={'px-2 py-1 rounded text-white ' + TASK_PRIORITY_CLASS_MAP[task.status] }>
-                          {TASK_PRIORITY_TEXT_MAP[task.status]}
+                        <span className={'px-2 py-1 rounded text-white ' + TASK_PRIORITY_CLASS_MAP[task.priority] }>
+                          {TASK_PRIORITY_TEXT_MAP[task.priority]}
                         </span>
                       </p>
                     </div>

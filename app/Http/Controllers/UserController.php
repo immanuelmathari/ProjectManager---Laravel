@@ -80,7 +80,7 @@ class UserController extends Controller
         if ($password) {
             $data['password'] = bcrypt($password);
         } else {
-            unset($date['password']);
+            unset($data['password']);
         }
         $user->update($data);
         return to_route('user.index')->with("success", "User \"$user->name\" was updated");
@@ -93,6 +93,6 @@ class UserController extends Controller
     {
         $name = $user->name;
         $user->delete();
-        return to_route('user.index')->with('success', "User \"$user->name\" was deleted");
+        return to_route('user.index')->with('success', "User \"$name\" was deleted");
     }
 }
